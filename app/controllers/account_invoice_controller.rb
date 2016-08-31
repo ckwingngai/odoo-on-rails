@@ -7,25 +7,26 @@ class AccountInvoiceController < ApplicationController
 
   def get_fields
     @data = @@odoo.fields_get
-    render :text => @data
+    render :plain => @data
   end
 
   def get_all_id
     @limit = params[:limit].to_i
     @data = @@odoo.search([], 0, @limit)
-    render :text => @data
+    render :plain => @data
   end
 
   def get_all
     @limit = params[:limit].to_i
     @data = @@odoo.search_read(@limit)
-    render :text => @data
+    render :plain => @data
   end
 
   def get_one
     @id = params[:id].to_i
-    @data = @@odoo.read(@id)
-    render :text => @data
+    @isValid = Validation.new.process([{data: @id, type: Integer}], [])
+    @data = Validation.return(@isValid, @@odoo.read(@id))
+    render :plain => @data
   end
 
   def test_form
@@ -35,27 +36,27 @@ class AccountInvoiceController < ApplicationController
   def create
     @partner_id = params[:partner_id].to_i
     @data = @@odoo.create({partner_id: @partner_id})
-    render :text => @data
+    render :plain => @data
   end
 
   def open
     @data = @@odoo.update(params[:id].to_i, "open")
-    render :text => @data
+    render :plain => @data
   end
 
   def paid
     @data = @@odoo.update(params[:id].to_i, "paid")
-    render :text => @data
+    render :plain => @data
   end
 
   def cancel
     @data = @@odoo.update(params[:id].to_i, "cancel")
-    render :text => @data
+    render :plain => @data
   end
 
   def reset
     @data = @@odoo.update(params[:id].to_i, "draft")
-    render :text => @data
+    render :plain => @data
   end
 
 end
