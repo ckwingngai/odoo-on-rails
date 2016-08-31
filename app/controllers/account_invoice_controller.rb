@@ -28,6 +28,10 @@ class AccountInvoiceController < ApplicationController
     render :text => @data
   end
 
+  def test_form
+
+  end
+
   def create
     @partner_id = params[:partner_id].to_i
     @data = @@odoo.create({partner_id: @partner_id})

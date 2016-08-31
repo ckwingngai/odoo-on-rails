@@ -1,0 +1,25 @@
+<h1>Account Invoice Test Form</h1>
+<form action="/api/account_invoice/create" method="POST">
+  <input type="text" name="partner_id" />
+  <button type="submit">Create</button>
+</form>
+
+<form action="/api/account_invoice/open" method="POST">
+  <input type="text" name="id" />
+  <button type="submit">Open</button>
+</form>
+
+<form action="/api/account_invoice/paid" method="POST">
+  <input type="text" name="id" />
+  <button type="submit">Paid</button>
+</form>
+
+<form action="/api/account_invoice/cancel" method="POST">
+  <input type="text" name="id" />
+  <button type="submit">Cancel</button>
+</form>
+
+<form action="/api/account_invoice/reset" method="POST">
+  <input type="text" name="id" />
+  <button type="submit">Reset</button>
+</form>
