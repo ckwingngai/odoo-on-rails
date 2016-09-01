@@ -34,9 +34,9 @@ class OdooConnect
     backup(@new_id, 'create')
   end
 
-  def update(id, action)
-    $models.execute_kw($db, $uid, $password, @@table, 'write', [[id], {state: action}])
-    backup(id, action)
+  def update(id, obj)
+    $models.execute_kw($db, $uid, $password, @@table, 'write', [[id], obj])
+    backup(id, obj)
   end
 
   def backup(id, action)

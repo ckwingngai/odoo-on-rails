@@ -42,22 +42,22 @@ class AccountInvoiceController < ApplicationController
   end
 
   def open
-    @data = @@odoo.update(params[:id].to_i, "open")
+    @data = @@odoo.update(params[:id].to_i, {state: "open"})
     render :plain => @data
   end
 
   def paid
-    @data = @@odoo.update(params[:id].to_i, "paid")
+    @data = @@odoo.update(params[:id].to_i, {state: "paid"})
     render :plain => @data
   end
 
   def cancel
-    @data = @@odoo.update(params[:id].to_i, "cancel")
+    @data = @@odoo.update(params[:id].to_i, {state: "cancel"})
     render :plain => @data
   end
 
   def reset
-    @data = @@odoo.update(params[:id].to_i, "draft")
+    @data = @@odoo.update(params[:id].to_i, {state: "draft"})
     render :plain => @data
   end
 

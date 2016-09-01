@@ -29,7 +29,14 @@ class ResUsersController < ApplicationController
   def create
     @name = params[:name]
     @login = params[:login]
-    @data = @@odoo.create({name: @name, login: @login})
+    @password = params[:password]
+    @data = @@odoo.create({name: @name, login: @login, password: @password})
+    render :plain => @data
+  end
+
+  def change_password
+    puts "change_password #{params[:id]} #{params[:password]}"
+    @data = @@odoo.update(params[:id].to_i, {password: params[:password]})
     render :plain => @data
   end
 

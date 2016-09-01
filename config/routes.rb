@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'api/res_users/get_one/:id' => 'res_users#get_one'
   get 'res_users/test_form' => 'res_users#test_form'
   post 'api/res_users/create/' => 'res_users#create'
+  post 'api/res_users/change_password/' => 'res_users#change_password'
 
   # Res - Partner
   get 'api/res_partner/get_fields/' => 'res_partner#get_fields'
