@@ -20,6 +20,12 @@ Rails.application.routes.draw do
   post 'api/res_users/create/' => 'res_users#create'
   post 'api/res_users/change_password/' => 'res_users#change_password'
 
+  # Res - Groups
+  get 'api/res_groups/get_fields/' => 'res_groups#get_fields'
+  get 'api/res_groups/get_all_id/(:limit)' => 'res_groups#get_all_id'
+  get 'api/res_groups/get_all/(:limit)' => 'res_groups#get_all'
+  get 'api/res_groups/get_one/:id' => 'res_groups#get_one'
+
   # Res - Partner
   get 'api/res_partner/get_fields/' => 'res_partner#get_fields'
   get 'api/res_partner/get_all_id/(:limit)' => 'res_partner#get_all_id'
