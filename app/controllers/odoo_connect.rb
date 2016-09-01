@@ -5,6 +5,7 @@ $password = "654321"
 $common = XMLRPC::Client.new2("#{$url}/xmlrpc/2/common")
 $uid = $common.call('authenticate', $db, $username, $password, {})
 $models = XMLRPC::Client.new2("#{$url}/xmlrpc/2/object").proxy
+$api_limit = 10
 
 class OdooConnect
   def initialize(table)
@@ -16,7 +17,7 @@ class OdooConnect
   end
 
   # params => [['is_company', '=', true], ['customer', '=', true]]
-  def search(params=[], offset=0, limit=100)
+  def search(params=[], offset, limit)
     $models.execute_kw($db, $uid, $password, @@table, 'search', [params], {offset: offset, limit: limit})
   end
 

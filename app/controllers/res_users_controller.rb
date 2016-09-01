@@ -1,5 +1,5 @@
-class ResPartnerController < ApplicationController
-  @@odoo = OdooConnect.new('res.partner')
+class ResUsersController < ApplicationController
+  @@odoo = OdooConnect.new('res.users')
 
   def get_fields
     @data = @@odoo.fields_get
@@ -28,7 +28,8 @@ class ResPartnerController < ApplicationController
 
   def create
     @name = params[:name]
-    @data = @@odoo.create({name: @name})
+    @login = params[:login]
+    @data = @@odoo.create({name: @name, login: @login})
     render :plain => @data
   end
 
