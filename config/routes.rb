@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  # General
+  get 'api/:table/get_fields/' => 'odoo#get_fields'
+  get 'api/:table/get_all_id/(:limit)' => 'odoo#get_all_id'
+  get 'api/:table/get_all/(:limit)' => 'odoo#get_all'
+  get 'api/:table/get_one/:id' => 'odoo#get_one'
+
   # Account - Invoice
   get 'api/account_invoice/get_fields/' => 'account_invoice#get_fields'
   get 'api/account_invoice/get_all_id/(:limit)' => 'account_invoice#get_all_id'
@@ -10,6 +17,14 @@ Rails.application.routes.draw do
   post 'api/account_invoice/paid/' => 'account_invoice#paid'
   post 'api/account_invoice/cancel/' => 'account_invoice#cancel'
   post 'api/account_invoice/reset/' => 'account_invoice#reset'
+  post 'api/account_invoice/add/' => 'account_invoice#add'
+  get 'test_method' => 'account_invoice#test_method'
+
+  # Invoice - Line
+  get 'api/invoice_line/get_fields/' => 'invoice_line#get_fields'
+  get 'api/invoice_line/get_all_id/(:limit)' => 'invoice_line#get_all_id'
+  get 'api/invoice_line/get_all/(:limit)' => 'invoice_line#get_all'
+  get 'api/invoice_line/get_one/:id' => 'invoice_line#get_one'
 
   # Res - Users
   get 'api/res_users/get_fields/' => 'res_users#get_fields'

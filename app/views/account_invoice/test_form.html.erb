@@ -1,7 +1,14 @@
 <h1>Account Invoice Test Form</h1>
 <form action="/api/account_invoice/create" method="POST">
   <input type="text" name="partner_id" />
+  <input type="text" name="invoice_ids" />
   <button type="submit">Create</button>
+</form>
+
+<form action="/api/account_invoice/add" method="POST">
+  <input type="text" name="id" />
+  <input type="text" name="item" />
+  <button type="submit">Add</button>
 </form>
 
 <form action="/api/account_invoice/open" method="POST">

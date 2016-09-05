@@ -1,3 +1,4 @@
+require "xmlrpc/client"
 $url = "http://demo.3acct.com:8069"
 $db = "test_db"
 $username = "demo@3acct.com"
@@ -8,8 +9,16 @@ $models = XMLRPC::Client.new2("#{$url}/xmlrpc/2/object").proxy
 $api_limit = 10
 
 class OdooConnect
+
   def initialize(table)
     @@table = table
+  end
+
+  def method_call
+    # puts "method_call #{@@table}"
+    # $models.execute_kw($db, $uid, $password,
+    #     @@table, 'check_access_rights',
+    #     ['read'], {raise_exception: false})
   end
 
   def fields_get
