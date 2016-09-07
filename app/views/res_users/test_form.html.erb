@@ -9,5 +9,19 @@
 <form action="/api/res_users/change_password" method="POST">
   <input type="text" name="id" placeholder="id"/>
   <input type="text" name="password" placeholder="new password"/>
-  <button type="submit">Active</button>
+  <button type="submit">Change Password</button>
+</form>
+
+<form action="/api/res_users/change_app_right" method="POST">
+  <input type="text" name="id" placeholder="id"/>
+  <input type="text" name="module" placeholder="module" value="sel_groups_9_10"/>
+  <input type="text" name="position" placeholder="position" value="9"/>
+  <button type="submit">Change Application Right</button>
+</form>
+
+<form action="/api/res_users/change_extra_right" method="POST">
+  <input type="text" name="id" placeholder="id"/>
+  <input type="text" name="key" placeholder="key" value="in_group_6"/>
+  <input type="text" name="right" placeholder="right" value="false"/>
+  <button type="submit">Change Extra Right</button>
 </form>

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   # General
   get 'api/:table/get_fields/' => 'odoo#get_fields'
   get 'api/:table/get_all_id/(:limit)' => 'odoo#get_all_id'
@@ -23,6 +22,8 @@ Rails.application.routes.draw do
   get 'res_users/test_form' => 'res_users#test_form'
   post 'api/res_users/create/' => 'res_users#create'
   post 'api/res_users/change_password/' => 'res_users#change_password'
+  post 'api/res_users/change_app_right/' => 'res_users#change_app_right'
+  post 'api/res_users/change_extra_right/' => 'res_users#change_extra_right'
 
   # Res - Groups (res_groups)
 

@@ -44,6 +44,7 @@ class OdooConnect
   end
 
   def update(id, obj)
+    puts "id: #{id}, obj: #{obj}"
     $models.execute_kw($db, $uid, $password, @@table, 'write', [[id], obj])
     backup(id, obj)
   end

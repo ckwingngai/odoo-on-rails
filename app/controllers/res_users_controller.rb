@@ -15,8 +15,20 @@ class ResUsersController < ApplicationController
 
   def change_password
     @odoo = connect()
-    puts "change_password #{params[:id]} #{params[:password]}"
     @data = @odoo.update(params[:id].to_i, {password: params[:password]})
+    render :plain => @data
+  end
+
+  def change_app_right
+    @odoo = connect()
+    @data = @odoo.update(params[:id].to_i, {params[:module] => params[:position].to_i})
+    render :plain => @data
+  end
+
+  def change_extra_right
+    @odoo = connect()
+    @right = params[:right] == 'true'
+    @data = @odoo.update(params[:id].to_i, {params[:key] => @right})
     render :plain => @data
   end
 
