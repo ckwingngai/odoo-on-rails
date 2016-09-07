@@ -50,7 +50,11 @@ class OdooConnect
 
   def backup(id, action)
     accountInvoice = AccountInvoice.create({ref_id: id, action: action})
-    accountInvoice.save
+    if accountInvoice.save
+      return "ID:#{id} is triggered with #{action} in local id #{accountInvoice.id}"
+    else
+      return "false to save"
+    end
   end
 
 end

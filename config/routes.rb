@@ -30,5 +30,7 @@ Rails.application.routes.draw do
   get 'res_partner/test_form' => 'res_partner#test_form'
   post 'api/res_partner/create/' => 'res_partner#create'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # upload file
+  resources :uploads
+  get 'post' => 'uploads#post'
 end

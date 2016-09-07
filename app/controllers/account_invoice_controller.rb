@@ -8,6 +8,7 @@ class AccountInvoiceController < ApplicationController
 
   def test_form
     # Test Form for Create, Open, Paid, Cancel, Reset
+    @account_invoice = AccountInvoice.all
   end
 
   def create
@@ -90,5 +91,11 @@ class AccountInvoiceController < ApplicationController
     })
     render :plain => @data
   end
+
+  private
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def account_invoice_params
+      params.require(:account_invoice).permit(:image)
+    end
 
 end
