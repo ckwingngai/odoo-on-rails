@@ -33,27 +33,33 @@ class AccountInvoiceController < ApplicationController
     render :plain => @data
   end
 
-  def open
+  def _process_invoice(id, new_state, allow_states)
     @odoo = connect()
-    @data = @odoo.update(params[:id].to_i, {state: "open"})
+    ori_data = eval(@odoo.read(id))
+    if allow_states.index ori_data[:state]
+      data = @odoo.update(id, {state: new_state})
+    else
+      data = "Fail to #{new_state} a non-#{allow_states} invoice, id: #{id}"
+    end
+  end
+
+  def open
+    @data = _process_invoice(params[:id].to_i, "open", ["draft"])
     render :plain => @data
   end
 
   def paid
-    @odoo = connect()
-    @data = @odoo.update(params[:id].to_i, {state: "paid"})
+    @data = _process_invoice(params[:id].to_i, "paid", ["open"])
     render :plain => @data
   end
 
   def cancel
-    @odoo = connect()
-    @data = @odoo.update(params[:id].to_i, {state: "cancel"})
+    @data = _process_invoice(params[:id].to_i, "cancel", ["draft", "open"])
     render :plain => @data
   end
 
   def reset
-    @odoo = connect()
-    @data = @odoo.update(params[:id].to_i, {state: "draft"})
+    @data = _process_invoice(params[:id].to_i, "draft", ["cancel"])
     render :plain => @data
   end
 
