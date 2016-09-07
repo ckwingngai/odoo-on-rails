@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # Test form list
+  root :to => 'home#index'
+
   # General
   get 'api/:table/get_fields/' => 'odoo#get_fields'
   get 'api/:table/get_all_id/(:limit)' => 'odoo#get_all_id'

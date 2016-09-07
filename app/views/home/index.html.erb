@@ -1,0 +1,25 @@
+<h1>API Test Index</h1>
+<table class="table table-striped table-bordered table-responsive table-hover">
+  <thead>
+    <th>Module</th>
+    <th>Description</th>
+    <th>Link</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>res.users</td>
+      <td>Create a new user, Change password, Change application and extra right</td>
+      <td><%= link_to("Test Form", res_users_test_form_path) %></td>
+    </tr>
+    <tr>
+      <td>res.partner</td>
+      <td>Create a new customer (for invoices)</td>
+      <td><%= link_to("Test Form", res_partner_test_form_path) %></td>
+    </tr>
+    <tr>
+      <td>account.invoice</td>
+      <td>Create, Open, Paid, Cancel, Rest an invoice and Add line items</td>
+      <td><%= link_to("Test Form", account_invoice_test_form_path) %></td>
+    </tr>
+  </tbody>
+</table>
