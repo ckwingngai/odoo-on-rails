@@ -1,4 +1,12 @@
 require "xmlrpc/client"
+# master_pwd:softpub!@#
+# name:tommy_test_1
+# login:info@listenfinancial.com
+# password:123456
+# lang:en_US
+# country_code:hk
+
+$master_pwd = "softpub!@#"
 $url = "http://demo.3acct.com:8069"
 $db = "test_db"
 $username = "demo@3acct.com"
@@ -12,6 +20,34 @@ class OdooConnect
 
   def initialize(table)
     @@table = table
+  end
+
+  def create_db(params)
+    uri = URI("#{$url}/web/database/create")
+    # request = Net::HTTP::Post.new(uri)
+    # # request.read_timeout = 5000
+    # # puts "request.read_timeout: #{request.read_timeout}"
+    # res = Net::HTTP.post_form(uri,
+    #   'master_pwd' => $master_pwd,
+    #   'name' => 'raymond_test',
+    #   'login' => 'raymond@test.com',
+    #   'password' => '123456',
+    #   'lang' => 'en_US',
+    #   'country_code' => 'hk'
+    # )
+    clnt = HTTPClient.new
+    clnt.receive_timeout = 10000
+    body = {
+      'master_pwd' => $master_pwd,
+      'name' => params['name'],
+      'login' => params['login'],
+      'password' => params['password'],
+      'lang' => params['lang'],
+      'country_code' => params['country_code']
+    }
+    res = clnt.post(uri, body)
+
+    return res.body
   end
 
   def method_call

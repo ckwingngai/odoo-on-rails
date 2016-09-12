@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root :to => 'home#index'
 
   # General
+  get 'odoo/test_form' => 'odoo#test_form'
+  post 'api/create_db/' => 'odoo#create_db'
   get 'api/:table/get_fields/' => 'odoo#get_fields'
   get 'api/:table/get_all_id/(:limit)' => 'odoo#get_all_id'
   get 'api/:table/get_all/(:limit)' => 'odoo#get_all'

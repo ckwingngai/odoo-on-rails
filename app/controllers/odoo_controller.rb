@@ -1,6 +1,23 @@
 class OdooController < ApplicationController
   # OdooConnect.class_variable_set(:@@table, 'res.groups')
 
+  def create_db
+    @odoo = connect()
+    @params = {
+      'name' => params[:name],
+      'login' => params[:login],
+      'password' => params[:password],
+      'lang' => params[:lang],
+      'country_code' => params[:country_code]
+    }
+    @data = @odoo.create_db(@params)
+    render :plain => @data
+  end
+
+  def test_form
+    # Test Form for Create DB
+  end
+
   def get_table
     @path_arr = request.env['PATH_INFO'].split("/")
     @path_arr[2].gsub('_', '.')
