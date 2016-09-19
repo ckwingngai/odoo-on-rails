@@ -10,6 +10,15 @@ Rails.application.routes.draw do
   get 'api/:table/get_all/(:limit)' => 'odoo#get_all'
   get 'api/:table/get_one/:id' => 'odoo#get_one'
 
+  # Expense
+  get 'hr_expense/test_form/' => 'hr_expense#test_form'
+  post 'api/hr_expense/create/' => 'hr_expense#create'
+  post 'api/hr_expense/submit/' => 'hr_expense#submit'
+  post 'api/hr_expense/approve/' => 'hr_expense#approve'
+  post 'api/hr_expense/post/' => 'hr_expense#post'
+  post 'api/hr_expense/done/' => 'hr_expense#done'
+  post 'api/hr_expense/cancel/' => 'hr_expense#cancel'
+
   # Account - Invoice (account_invoice)
   get 'account_invoice/test_form' => 'account_invoice#test_form'
   post 'api/account_invoice/create/' => 'account_invoice#create'

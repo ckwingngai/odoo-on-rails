@@ -1,0 +1,33 @@
+<h1>Expense Test Form</h1>
+<form action="/api/hr_expense/create" method="POST">
+  <input type="text" name="employee_id" placeholder="employee_id" value="1"/>
+  <input type="text" name="name" placeholder="name" value="Free Lunch 1"/>
+  <input type="text" name="product_id" placeholder="product_id" value="4"/>
+  <input type="text" name="unit_amount" placeholder="unit_amount" value="10"/>
+  <button type="submit">Create</button>
+</form>
+
+<form action="/api/hr_expense/submit" method="POST">
+  <input type="text" name="id" />
+  <button type="submit">Submit</button>
+</form>
+
+<form action="/api/hr_expense/approve" method="POST">
+  <input type="text" name="id" />
+  <button type="submit">Approve</button>
+</form>
+
+<form action="/api/hr_expense/post" method="POST">
+  <input type="text" name="id" />
+  <button type="submit">Post</button>
+</form>
+
+<form action="/api/hr_expense/done" method="POST">
+  <input type="text" name="id" />
+  <button type="submit">Done</button>
+</form>
+
+<form action="/api/hr_expense/cancel" method="POST">
+  <input type="text" name="id" />
+  <button type="submit">Cancel</button>
+</form>
