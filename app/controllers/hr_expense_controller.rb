@@ -38,34 +38,34 @@ class HrExpenseController < ApplicationController
     @odoo = connect()
     ori_data = eval(@odoo.read(id))
     if allow_states.index ori_data[:state]
-      data = @odoo.update(id, {state: new_state})
+      data = @odoo.update(id, new_state)
     else
       data = "Fail to #{new_state} a non-#{allow_states} invoice, id: #{id}"
     end
   end
 
   def submit
-    @data = _process_invoice(params[:id].to_i, "submit", ["draft"])
+    @data = _process_invoice(params[:id].to_i, {state: "submit"}, ["draft"])
     render :plain => @data
   end
 
   def approve
-    @data = _process_invoice(params[:id].to_i, "approve", ["submit"])
+    @data = _process_invoice(params[:id].to_i, {state: "approve"}, ["submit"])
     render :plain => @data
   end
 
   def post
-    @data = _process_invoice(params[:id].to_i, "post", ["approve"])
+    @data = _process_invoice(params[:id].to_i, {state: "post"}, ["approve"])
     render :plain => @data
   end
 
   def done
-    @data = _process_invoice(params[:id].to_i, "done", ["post"])
+    @data = _process_invoice(params[:id].to_i, {state: "done"}, ["post"])
     render :plain => @data
   end
 
   def cancel
-    @data = _process_invoice(params[:id].to_i, "cancel", ["draft"])
+    @data = _process_invoice(params[:id].to_i, {state: "cancel"}, ["draft"])
     render :plain => @data
   end
 

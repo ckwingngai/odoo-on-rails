@@ -76,19 +76,20 @@ class OdooConnect
 
   def create(obj)
     @new_id = $models.execute_kw($db, $uid, $password, @@table, 'create', [obj])
-    backup(@new_id, 'create')
+    backup(@new_id, 'create', obj)
   end
 
   def update(id, obj)
     puts "id: #{id}, obj: #{obj}"
     $models.execute_kw($db, $uid, $password, @@table, 'write', [[id], obj])
-    backup(id, obj)
+    backup(id, 'update', obj)
   end
 
-  def backup(id, action)
-    accountInvoice = AccountInvoice.create({ref_id: id, action: action})
-    if accountInvoice.save
-      return "ID:#{id} is triggered with #{action} in local id #{accountInvoice.id}"
+  def backup(id, action, obj)
+    @RubyClass = OdooController.new.get_rails_class(@@table).constantize
+    local_db = @RubyClass.create({db: $db, ref_id: id, action: action, post_json: obj.to_json})
+    if local_db.save
+      return "ID:#{id} is triggered with #{obj} in local id #{local_db.id}"
     else
       return "false to save"
     end

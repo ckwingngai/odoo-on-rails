@@ -1,0 +1,2 @@
+class HrExpense < ApplicationRecord
+end

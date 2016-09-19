@@ -23,6 +23,11 @@ class OdooController < ApplicationController
     @path_arr[2].gsub('_', '.')
   end
 
+  def get_rails_class(table)
+    @table_arr = table.split('.')
+    @class = @table_arr.map(&:capitalize).join
+  end
+
   def connect
     @table = get_table()
     OdooConnect.new(@table)
