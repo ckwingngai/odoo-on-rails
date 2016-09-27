@@ -8,7 +8,7 @@ require "xmlrpc/client"
 
 $master_pwd = "softpub!@#"
 $url = "http://demo.3acct.com:8069"
-$db = "test_db"
+$db = "test_db2"
 $username = "demo@3acct.com"
 $password = "654321"
 $common = XMLRPC::Client.new2("#{$url}/xmlrpc/2/common")
@@ -46,6 +46,8 @@ class OdooConnect
       'country_code' => params['country_code']
     }
     res = clnt.post(uri, body)
+    new_company = Company.create({name: body["name"], lang: body["lang"], country_code: body["country_code"]})
+    new_company.save
 
     return res.body
   end

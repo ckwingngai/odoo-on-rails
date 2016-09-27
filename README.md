@@ -22,6 +22,19 @@
 * SomeThing && some_thing is the attribute name added while Model is the table being updated
 * `rails db:migrate`
 
+### Drop DB
+* `rails generate migration DropProductsTable`
+* `def up
+    drop_table :products
+  end
+
+  def down
+    raise ActiveRecord::IrreversibleMigration
+  end`
+
+### Roll Back DB change
+* `rails db:migrate:down VERSION=20100905201547`
+
 ### Many - Many relationship
 * http://guides.rubyonrails.org/association_basics.html
 
