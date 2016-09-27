@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160919084623) do
+ActiveRecord::Schema.define(version: 20160927030633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,19 @@ ActiveRecord::Schema.define(version: 20160919084623) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "authors", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.integer  "author_id"
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "hr_expenses", force: :cascade do |t|
     t.string   "db"
     t.integer  "ref_id"
@@ -31,6 +44,27 @@ ActiveRecord::Schema.define(version: 20160919084623) do
     t.string   "remarks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products_tests", id: false, force: :cascade do |t|
+    t.integer "test_id",    null: false
+    t.integer "product_id", null: false
+    t.index ["product_id", "test_id"], name: "index_products_tests_on_product_id_and_test_id", using: :btree
+    t.index ["test_id", "product_id"], name: "index_products_tests_on_test_id_and_product_id", using: :btree
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.string   "title"
+    t.text     "desc"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "part_number"
   end
 
   create_table "uploads", force: :cascade do |t|
