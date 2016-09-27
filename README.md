@@ -1,24 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Installation
+* `bundle`
 
-Things you may want to cover:
+### DB setting
+* Path: _/config/database.yml_
+* Change username and password
 
-* Ruby version
+### Static file
+* _/public_
 
-* System dependencies
+### Lauch server
+* `rails s`
 
-* Configuration
+### Create a table
+* `rails g model [field_name]:[field_type]`
+* `rails db:migrate`
 
-* Database creation
+### Update the table
+* `rails g migration AddSomeThingToModel some_thing:string`
+* SomeThing && some_thing is the attribute name added while Model is the table being updated
+* `rails db:migrate`
 
-* Database initialization
+### Many - Many relationship
+* http://guides.rubyonrails.org/association_basics.html
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Auth0
+* https://manage.auth0.com/#/clients/hDb34f1c3evZ6o4nTW8WRdlbELoGdpE7/quickstart
