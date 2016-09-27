@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
+  # get 'auth0/callback'
+  # get 'auth0/failure'
+  get "/auth/auth0/callback" => "auth0#callback"
+  get "/auth/failure" => "auth0#failure"
+
   # Test form list
   root :to => 'home#index'
+
+  get 'login/' => 'login#index'
 
   # General
   get 'odoo/test_form' => 'odoo#test_form'

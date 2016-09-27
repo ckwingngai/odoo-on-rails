@@ -53,3 +53,7 @@ gem "paperclip", "~> 5.0.0"
 gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'httpclient'
+
+gem 'omniauth', '~> 1.3.1'
+
+gem 'omniauth-auth0', '~> 1.4.1'
