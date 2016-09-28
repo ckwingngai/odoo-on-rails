@@ -22,3 +22,6 @@
 
 # Ignore upload file in dev
 /public/system/uploads/*
+
+# Ignore application configuration
+/config/application.yml

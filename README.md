@@ -37,7 +37,27 @@
 
 ### Many - Many relationship
 * `has_many :through`
+* After that join table can be done by directly calling class attributes
 * http://guides.rubyonrails.org/association_basics.html
+
+### Email
+* `rails g mailer example_mailer`
+* _in app/mailers/example_mailer.rb_
+* Add
+  `default from: "from@example.com"`
+  `def sample_email
+    mail(to: email, subject: 'Sample Email')
+  end`
+* Add files in _app/views/example_mailer/sample_email.html.erb_ and _app/views/example_mailer/sample_email.text.erb_
+* Preview in _test/mailers/previews/example_mailer_preview.rb_
+  `def sample_mail_preview
+    ExampleMailer.sample_email()
+  end`
+  preview link: http://localhost:3000/rails/mailers/example_mailer/sample_mail_preview
+* reference: https://launchschool.com/blog/handling-emails-in-rails, https://ihower.tw/rails4/actionmailer.html
+
+### Set environment variables
+* reference: http://railsapps.github.io/rails-environment-variables.html
 
 ### Debug
 * `rails c`
@@ -45,3 +65,6 @@
 
 ### Auth0
 * https://manage.auth0.com/#/clients/hDb34f1c3evZ6o4nTW8WRdlbELoGdpE7/quickstart
+
+### Remarks
+* Changes under _/config/ folder needed to be refreshed
