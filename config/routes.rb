@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get '/member/test_form' => 'member#test_form'
   post '/api/member/create' => 'member#create'
+  get '/member/verify/:code' => 'member#verify'
 
   # get 'auth0/callback'
   # get 'auth0/failure'
