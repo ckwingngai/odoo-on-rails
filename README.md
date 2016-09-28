@@ -36,7 +36,12 @@
 * `rails db:migrate:down VERSION=20100905201547`
 
 ### Many - Many relationship
+* `has_many :through`
 * http://guides.rubyonrails.org/association_basics.html
+
+### Debug
+* `rails c`
+* Similar method to meteor shell to access model classes
 
 ### Auth0
 * https://manage.auth0.com/#/clients/hDb34f1c3evZ6o4nTW8WRdlbELoGdpE7/quickstart

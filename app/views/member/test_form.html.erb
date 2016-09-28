@@ -1,6 +1,12 @@
 <h1>Member Test Form</h1>
+
 <form action="/api/member/create" method="POST">
   <input type="text" name="email" placeholder="email" value="test@test1.com"/>
   <input type="text" name="password" placeholder="password" value="123123" />
+  <select name="company_id">
+    <% @companies.each do |company| %>
+      <option value="<%= company.id %>"><%= company.name %></option>
+    <% end %>
+  </select>
   <button type="submit">Create</button>
 </form>
