@@ -4,6 +4,7 @@
 * Install RVM: `\curl -sSL https://get.rvm.io | bash`
 * Load the config: `source ~/.rvm/scripts/rvm`
 * Install / Update Ruby: `rvm install 2.3.0`
+* Install the postgreSQL: `brew update` & `brew install postgresql`
 * Install Bundler: `sudo gem install bundler`
 * Install Rails: `gem install rails`
 * Run `bundle` will Install all gems in _/Gemfile_ similar to node packages
