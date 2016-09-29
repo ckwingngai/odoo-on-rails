@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post 'api/member/create' => 'member#create'
   get 'member/verify/:code' => 'member#verify'
   post 'api/member/add_company' => 'member#add_company'
+  post 'api/member/invite_company' => 'member#invite_company'
+  get 'member/accept_company/:member_id/:company_id/:code' => 'member#accept_company'
 
   # get 'auth0/callback'
   # get 'auth0/failure'

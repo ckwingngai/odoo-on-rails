@@ -70,9 +70,35 @@ class MemberController < ApplicationController
     @company_id = params[:company_id].to_i
     exist = Participate.where('member_id' => @member_id, 'company_id' => @company_id)
     if (exist.length > 0)
-      @result = "Fail to add. Member id: #{@member_id} is already in company id: #{@company_id}"
+      @result = "(Fail to add) Member id: #{@member_id} is already in company id: #{@company_id}"
     else
       @result = new_parti(@member_id, @company_id)
+    end
+    render :plain => @result
+  end
+
+  def invite_company
+    @member = Member.find(params[:member_id].to_i)
+    @company = Company.find(params[:company_id].to_i)
+    exist = Participate.where('member_id' => @member.id, 'company_id' => @company.id)
+    if exist.length > 0
+      @result = "(Fail to send) The member id: #{@member.id} is already in the company id: #{@company.id}"
+    else
+      @invite_link = request.protocol + request.host_with_port + "/member/accept_company/#{@member.id}/#{@company.id}/" + @member.verify_code.to_s
+      MemberMailer.invite_join(@member.email, @company.name, @invite_link).deliver
+      @result = "Invitation sent"
+    end
+    render :plain => @result
+  end
+
+  def accept_company
+    @member_id = params[:member_id].to_i
+    @company_id = params[:company_id].to_i
+    @member = Member.where('verify_code' => params[:code].to_i, 'id' => @member_id)
+    if @member.length > 0
+      @result = new_parti(@member_id, @company_id)
+    else
+      @result = "Invalid invitation link"
     end
     render :plain => @result
   end
