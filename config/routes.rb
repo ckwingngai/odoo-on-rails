@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # Testing
+  get 'jwt_demo' => 'member#jwt_demo'
   # Local db table api
   get 'api/:local_table/get_all_id/(:limit)' => 'local_db#get_all_id'
   get 'api/:local_table/get_all/(:limit)' => 'local_db#get_all'

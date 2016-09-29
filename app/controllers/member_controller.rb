@@ -1,4 +1,24 @@
+require 'jwt'
+
 class MemberController < ApplicationController
+  def jwt_demo
+    payload = {:data => 'test'}
+    # IMPORTANT: set nil as password parameter
+    token = JWT.encode payload, nil, 'none'
+    # eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJkYXRhIjoidGVzdCJ9.
+    puts "token: #{token}"
+    # Set password to nil and validation to false otherwise this won't work
+    decoded_token = JWT.decode token, nil, false
+    # Array
+    # [
+    #   {"data"=>"test"}, # payload
+    #   {"typ"=>"JWT", "alg"=>"none"} # header
+    # ]
+    puts "decoded_token: #{decoded_token}"
+    puts "data: #{@data}"
+    render :plain => decoded_token.to_json
+  end
+
   def test_form
     @companies = Company.all
   end
