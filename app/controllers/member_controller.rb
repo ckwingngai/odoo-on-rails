@@ -65,4 +65,16 @@ class MemberController < ApplicationController
     render :plain => @result
   end
 
+  def add_company
+    @member_id = params[:member_id].to_i
+    @company_id = params[:company_id].to_i
+    exist = Participate.where('member_id' => @member_id, 'company_id' => @company_id)
+    if (exist.length > 0)
+      @result = "Fail to add. Member id: #{@member_id} is already in company id: #{@company_id}"
+    else
+      @result = new_parti(@member_id, @company_id)
+    end
+    render :plain => @result
+  end
+
 end
