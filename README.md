@@ -2,8 +2,11 @@
 
 ### Installation
 * `bundle`
+* Install all gems in _/Gemfile_ similar to node packages
 
 ### DB setting
+* Install postgreSQL
+* Install pgAdmin as an admin panel
 * Path: _/config/database.yml_
 * Change username and password
 

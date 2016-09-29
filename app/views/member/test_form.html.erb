@@ -10,3 +10,13 @@
   </select>
   <button type="submit">Create</button>
 </form>
+
+<form action="/api/member/add_company" method="POST">
+  <input type="text" name="member_id" placeholder="member_id" value=""/>
+  <select name="company_id">
+    <% @companies.each do |company| %>
+      <option value="<%= company.id %>"><%= company.name %></option>
+    <% end %>
+  </select>
+  <button type="submit">Create</button>
+</form>

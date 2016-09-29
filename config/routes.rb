@@ -1,19 +1,24 @@
 Rails.application.routes.draw do
-  get '/member/test_form' => 'member#test_form'
-  post '/api/member/create' => 'member#create'
-  get '/member/verify/:code' => 'member#verify'
+  # Local db table api
+  get 'api/:local_table/get_all_id/(:limit)' => 'local_db#get_all_id'
+  get 'api/:local_table/get_all/(:limit)' => 'local_db#get_all'
+  get 'api/:local_table/get_one/:id' => 'local_db#get_one'
+
+  get 'member/test_form' => 'member#test_form'
+  post 'api/member/create' => 'member#create'
+  get 'member/verify/:code' => 'member#verify'
 
   # get 'auth0/callback'
   # get 'auth0/failure'
-  get "/auth/auth0/callback" => "auth0#callback"
-  get "/auth/failure" => "auth0#failure"
+  get "auth/auth0/callback" => "auth0#callback"
+  get "auth/failure" => "auth0#failure"
 
   # Test form list
   root :to => 'home#index'
 
   get 'login/' => 'login#index'
 
-  # General
+  # General odoo API
   get 'odoo/test_form' => 'odoo#test_form'
   post 'api/create_db/' => 'odoo#create_db'
   get 'api/:table/get_fields/' => 'odoo#get_fields'
