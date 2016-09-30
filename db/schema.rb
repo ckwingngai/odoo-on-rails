@@ -71,12 +71,6 @@ ActiveRecord::Schema.define(version: 20160928092950) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "products", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "products_tests", id: false, force: :cascade do |t|
     t.integer "test_id",    null: false
     t.integer "product_id", null: false
